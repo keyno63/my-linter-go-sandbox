@@ -1,5 +1,48 @@
 # my-linter-go-sandbox
 
+## My Linter (Go)
+
+Custom Go linter CLI:
+
+1. Recursively scans `.go` files under a target directory.
+2. Applies rules that implement a shared `Rule` interface.
+3. Prints violations to standard error.
+
+### Run
+
+```bash
+go run ./cmd/my-linter .
+```
+
+Or build binary:
+
+```bash
+go build -o my-linter ./cmd/my-linter
+./my-linter .
+```
+
+### Exit code
+
+- `0`: no violations
+- `1`: violation(s) found
+- `2`: execution failure (e.g., walk error)
+
+### Rule architecture
+
+Rules are defined by this interface in `internal/linter/engine.go`:
+
+```go
+type Rule interface {
+	Name() string
+	CheckFile(fset *token.FileSet, filePath string, file *ast.File) []Issue
+}
+```
+
+To add a new rule:
+
+1. Add a struct implementing `Rule` under `internal/rules`.
+2. Register it in `cmd/my-linter/main.go` via `linter.NewEngine(...)`.
+
 ## LICENSE
 
 This repository is an MIT License.  
