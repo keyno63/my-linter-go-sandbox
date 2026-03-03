@@ -16,6 +16,7 @@ func main() {
 
 	engine := linter.NewEngine(
 		rules.NewNoTodoCommentRule(),
+		rules.NewDeclarationOrderRule(),
 	)
 
 	issues, err := engine.Run(targetDir)

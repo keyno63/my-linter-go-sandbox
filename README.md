@@ -43,6 +43,15 @@ To add a new rule:
 1. Add a struct implementing `Rule` under `internal/rules`.
 2. Register it in `cmd/my-linter/main.go` via `linter.NewEngine(...)`.
 
+### Built-in rules
+
+- `no-todo-comment`: flags TODO comments.
+- `declaration-order`: checks top-level declaration order in a file:
+  - `struct` declarations must come before plain functions.
+  - `struct` names must be sorted a-z.
+  - methods must be placed under their struct and sorted a-z.
+  - plain function names must be sorted a-z.
+
 ## LICENSE
 
 This repository is an MIT License.  
