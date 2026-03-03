@@ -14,6 +14,12 @@ Custom Go linter CLI:
 go run ./cmd/my-linter .
 ```
 
+Auto-fix fixable rules:
+
+```bash
+go run ./cmd/my-linter --fix .
+```
+
 Or build binary:
 
 ```bash
@@ -51,6 +57,7 @@ To add a new rule:
   - `struct` names must be sorted a-z.
   - methods must be placed under their struct and sorted a-z.
   - plain function names must be sorted a-z.
+  - supports auto-fix with `--fix`.
 
 ## LICENSE
 
